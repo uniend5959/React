@@ -6,6 +6,30 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <span id="count"> count: 0 </span>
+  <button id="btnClick"> 클릭 </button>
+
+  <script>
+    let countNum = 0;
+    function handleCllick(){
+      countNum +=1
+      console.log(countNum);
+      Count.innerText = `${countNum}`
+    }
+
+    const btn = document.getElementById("btnClick");
+    const Count = document.getElementById('count');
+
+    btn.addEventListener('click', handleCllick)
+
+  </script>
 </body>
 </html>
+
+<!-- 
+자바스크립트 이벤트 처리방식
+1.이벤트가 이러나는 dom과 이벤트를 반영할 dom을 찾는다. 
+2.이벤트 핸들러를 넣어준다. 
+3.함수를 생성한다. 
+4.데이터를 업데이트한다. 
+-- 여러줄의 코드를 작성하고 번거롭다.  -->

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<!-- 바벨변환기 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script>
+
+  const root = document.getElementById("root");
+  const span = React.createElement(
+    'span',
+    {id : "reactSpan",style: {color: "red"}},
+    "hello span"
+  );
+const btn = React.createElement('button', {
+  onclick : () => console.log('버튼클릭')
+} , '클릭')
+const div = React.createElement('div', null [span, btn])
+  ReactDom.render(div, root);
+</script>
+</html>
+
+<!-- 규칙1 리액트는 html에 직접 코드를적지않는다 
+규칙2 자스로 dom을 생성하면서 html을 동적으로 관리할 수있다 
+규칙3 맨처음 루트 dom을 가져와 동적으로관리한 html을 어디에 넣을지 render를 통해 지정해주면, 매번 dom을 찾을 필요가 없어진다. 
+      -> 자스의 번거로움 하나 제거
+규칙4 리액트로 생성한 dom에 프로퍼티로 속성들을 넣어줌으로써 자바스크립트 사용시 사용되던, get, query,,, className,,..,innerText등을 한줄로 처리할수있게 한다.  -->
+<!-- 규칙 5 프로퍼티로 함수도 전달이 가능함, 리액트함수는 on을사용해야 인지함  -->
+<!-- 가장 큰차이점은 
+일반 html의 경우 html에서 시작해 자스에서 수정하고 업데이트해서 다시 html에 반영하는 거라면 
+리액트읭 경우 자스에서 지삭해서 html로 이동시키는것  -->
+
+
+여기서 createElement를 대체할 수있음 그 이유는 번잡하기때문에 한줄로 줄여주고 싶음!! 
+그게 바로 jsx 
+html태그와 비슷한 모양이며 리액트의 방식처럼 js기반으로 thml 돔을 생성할수 있음 
+
+
+<!-- const tilte = < h1 className = 'title' onClick ={()=> console.log()}>타이틀</h1>  -->
+
+다만 jsx는 리액트에서 사용하기 위해서는 바벨을이용해서 변환을 시켜줘야한다. 브라우저가 이해할수있는 언어로 변환시켜주는것
+루트로 전달되는가장 큰 ㄴ코드하나를 함수로 생성하고 그안에 리턴값을  
