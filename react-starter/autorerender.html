@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <!-- 수동 리렌더 : 데이터가 업데이트 되는 이벤트 등록 함수에 리렌더넣기 
+자동 리렌더 : 새로운데이터를 받으면 리렌더되게하기  -->
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<!-- 바벨변환기 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+<!-- 리렌더링 이해하기  -->
+const root = document.getElementById("root");
+
+
+function App(){
+  // 리액트에서 데이터를 저장하는 법 
+  const data = React.useState()
+  console.log(data) // [undefined, f]  undefined와 함수하나를 얻게되고 이 함수는 undefined를 바꾸는 함수이다. 
+  //undefind는 let couner  = 0을 대신하고 있으며 f는 function counterUp을 대신하고 있다 
+  // 구조분해할당을 애용해서 useState가 반환하는 배열을 각각 하나씩 꺼내준다. 
+  const [counter, setCounter] = React.useState(0)
+
+  function autoCounter(){
+    //setCounter(counter + 1)
+    setCounter((couter) => counter +1) //현재값을 사용해 새로운 값을 만드는 더 안전한 방법 
+    // couter을 변경시켜주는 함수 modifier는 자동으로 리렌더해주는 ReactDom.render(<App/>, root);를 가지고있어 자동 리렌더가 된다. 
+  
+  }
+
+  return(
+    <div>
+      <h3>Total Num : {counter}</h3>
+      <button onClick={autoCounter()}>Click me </button>
+    </div>
+  )
+}
+
+ReactDom.render(<App/>, root);
+</script>
+</html>
+
+useState는 두번재 인자로 데이터를 변경하는 함수를 주며, 해당 함수에는 리렌더를 시켜주는 기능이 있고, 
+즉 useState를 사용하면 데이터가 변경되면 리렌더가 발생한다. 
+
+
+1. state를 사용해 업뎉이트를 시켜주는 두가지 방법 
+  - set 두번째 인자로 변경해주기 
+  - 이전값을 바탕으로 새로운 값 만들기 
