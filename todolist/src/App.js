@@ -1,10 +1,13 @@
 // import FirstTodo from "./fisttodo/firstTodo";
-import Coin from "./roding/coin";
+// import Coin from "./roding/coin";
+
+import Todolist from "./basicTodolist";
 
 function App() {
   return (
     <div>
-      <Coin/>
+      <Todolist/>
+      {/* <Coin/> */}
       {/* <FirstTodo/> */}
     </div>
   );
