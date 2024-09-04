@@ -2,7 +2,7 @@
 
 
 
-const BoxItem = ({item}) =>{
+const BoxItem = ({item ,handleDelteItem,id}) =>{
 
 
   return(
@@ -12,7 +12,7 @@ const BoxItem = ({item}) =>{
             <p>{item.name} <span>{new Date(item.date).toString()}</span></p>
             <p>{item.content}</p>
           </div>
-          <button className="w-btnpx">삭제</button>
+          <button className="w-btnpx" onClick={() => handleDelteItem(id)}>삭제</button>
       </div>
       
     </>

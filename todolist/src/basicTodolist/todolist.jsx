@@ -1,14 +1,14 @@
 import BoxItem from "./todoitem"
 
 
-const ListMsp = ({data}) =>{
+const ListMsp = ({data, handleDelteItem}) =>{
 
   // 맵을 사용하여 돌려주기 
   return(
     <>
       <div>
         {data.map((item)=> 
-            <BoxItem item={item} />
+            <BoxItem  key={item.id} id={item.id} item={item} handleDelteItem={handleDelteItem} />
         )}
       </div>
     </>

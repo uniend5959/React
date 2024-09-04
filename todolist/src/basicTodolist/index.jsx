@@ -32,7 +32,11 @@ const Todolist = () =>{
     ])
   }
 
-  console.log('부모상태', data)
+  const handleDelteItem = (id) => {
+    console.log(id)
+    const deltedata = data.filter((itme) => itme.id !== id)
+    setData(deltedata);
+  }
 
 
 
@@ -43,7 +47,7 @@ const Todolist = () =>{
         <FormInput  handletoparent={handletoparent}/>
         <hr />
         {/* 자식에게 데이터 보내기 */}
-        <ListMsp data={data}/>
+        <ListMsp data={data} handleDelteItem={handleDelteItem}/>
       </div>
     </>
   )
