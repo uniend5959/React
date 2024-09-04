@@ -1,15 +1,16 @@
 import { useState } from "react"
+import PortalModal from "./portalModal"
+
 
 
 
 
 const BoxItem = ({item ,handleDelteItem,id}) =>{
-  const [isModal, setModal] = useState(false)
+  const [ModalOpen , setModalOpen] = useState(false)
 
   const handleModal = () => {
-    setModal((pre) => !pre)
+    setModalOpen((pre) => !pre)
   }
-
 
   return(
     <>
@@ -18,10 +19,11 @@ const BoxItem = ({item ,handleDelteItem,id}) =>{
             <p>{item.name} <span>{new Date(item.date).toString()}</span></p>
             <p>{item.content}</p>
           </div>
-          <button onClick={handleModal}>수정하기</button>
-          {isModal  && <div>모달오픈</div>}
+          <button onClick={() => handleModal()}>수정하기</button>
           <button className="w-btnpx" onClick={() => handleDelteItem(id)}>삭제</button>
       </div>
+
+      {ModalOpen && <PortalModal/>}
       
     </>
   )
